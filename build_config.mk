@@ -29,13 +29,18 @@ LDFLAGS += \
 # The define __STRICT_ANSI__ has been introduced for "(GNU Tools for ARM
 # Embedded Processors) 4.8.3 20131129 (release) [ARM/embedded-4_8-branch
 # revision 205641]". Its stdio.h would export a dprintf function otherwise.
-DEFINES += -D__STRICT_ANSI__ -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER
+DEFINES += -D__STRICT_ANSI__ -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER \
+            -DSL_PLATFORM_MULTI_THREADED
 
 
 INCLUDES += \
 	-Idriverlib \
 	-Idriverlib/inc\
 	-Iinc \
+    -Isimplelink \
+    -Isimplelink/include \
+    -Ioslib \
+    -Icommon \
 
 
 gdb_program:

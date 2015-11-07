@@ -19,10 +19,12 @@ DRIVER += \
 	$(ROOT_DIR)/driverlib/gcc/exe/libdriver.a \
 
 OBJS += \
+	src/bma222drv.o \
+	src/device_status.o \
 	src/main.o \
 	src/pinmux.o \
-	src/gpio_if.o \
-	src/startup_gcc.o \
+	src/smartconfig.o \
+	src/tmp006drv.o \
 
 
 DEPS := $(OBJS:.o=.d)
