@@ -15,8 +15,13 @@ all:
 
 include build_config.mk
 
+
 DRIVER += \
-	$(ROOT_DIR)/driverlib/gcc/exe/libdriver.a \
+	$(ROOT_DIR)/cc3200-sdk/driverlib/gcc/exe/libdriver.a \
+	$(ROOT_DIR)/cc3200-sdk/simplelink/gcc/exe/libsimplelink.a \
+	$(ROOT_DIR)/cc3200-sdk/oslib/gcc/exe/FreeRTOS.a \
+#/usr/local/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/lib/libc.a \
+#$(ROOT_DIR)/cc3200-sdk/oslib/gcc/exe/libtirtos.a
 
 OBJS += \
 	src/bma222drv.o \
@@ -25,6 +30,10 @@ OBJS += \
 	src/pinmux.o \
 	src/smartconfig.o \
 	src/tmp006drv.o \
+	cc3200-sdk/example/common/gpio_if.o \
+	cc3200-sdk/example/common/i2c_if.o \
+	cc3200-sdk/example/common/startup_gcc.o \
+	cc3200-sdk/example/common/uart_if.o \
 
 
 DEPS := $(OBJS:.o=.d)

@@ -30,18 +30,24 @@ LDFLAGS += \
 # Embedded Processors) 4.8.3 20131129 (release) [ARM/embedded-4_8-branch
 # revision 205641]". Its stdio.h would export a dprintf function otherwise.
 DEFINES += -D__STRICT_ANSI__ -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER \
-            -DSL_PLATFORM_MULTI_THREADED
+			-DSL_PLATFORM_MULTI_THREADED -DUSE_FREERTOS
 
 
 INCLUDES += \
-    -Iinc \
+	-Iinc \
+	-Icc3200-sdk \
 	-Icc3200-sdk/driverlib \
 	-Icc3200-sdk/driverlib/inc \
-    -Icc3200-sdk/example/common \
-    -Icc3200-sdk/inc \
+	-Icc3200-sdk/example/common \
+	-Icc3200-sdk/inc \
 	-Icc3200-sdk/oslib \
-    -Icc3200-sdk/simplelink \
-    -Icc3200-sdk/simplelink/include \
+	-Icc3200-sdk/simplelink \
+	-Icc3200-sdk/simplelink/include \
+	-Icc3200-sdk/third_party/FreeRTOS \
+	-Icc3200-sdk/third_party/FreeRTOS/source \
+	-Icc3200-sdk/third_party/FreeRTOS/source/include \
+	-Icc3200-sdk/third_party/FreeRTOS/source/portable/GCC/ARM_CM4 \
+	-Icc3200-sdk/ti_rtos/ti_rtos_config/ewarm/iar/tirtos \
 
 
 gdb_program:
