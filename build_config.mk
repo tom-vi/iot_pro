@@ -34,13 +34,14 @@ DEFINES += -D__STRICT_ANSI__ -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER \
 
 
 INCLUDES += \
-	-Idriverlib \
-	-Idriverlib/inc\
-	-Iinc \
-    -Isimplelink \
-    -Isimplelink/include \
-    -Ioslib \
-    -Icommon \
+    -Iinc \
+	-Icc3200-sdk/driverlib \
+	-Icc3200-sdk/driverlib/inc \
+    -Icc3200-sdk/example/common \
+    -Icc3200-sdk/inc \
+	-Icc3200-sdk/oslib \
+    -Icc3200-sdk/simplelink \
+    -Icc3200-sdk/simplelink/include \
 
 
 gdb_program:
