@@ -443,8 +443,10 @@ typedef _i16   _SlReturnVal_t;
 #endif
 
 
-
-#define __CONCAT(x,y)	x ## y
+/* __CONCAT is defined at arm-lib:^M
+ * gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include/sys/cdefs.h:175:0^M
+ * this define is commented to prevent warnings */
+/* #define __CONCAT(x,y)	x ## y */
 #define __CONCAT2(x,y)	__CONCAT(x,y)
 
 
