@@ -17,10 +17,9 @@ include build_config.mk
 
 
 DRIVER += \
-	$(ROOT_DIR)/cc3200-sdk/driverlib/gcc/exe/libdriver.a \
 	$(ROOT_DIR)/cc3200-sdk/simplelink/gcc/exe/libsimplelink.a \
+	$(ROOT_DIR)/cc3200-sdk/driverlib/gcc/exe/libdriver.a \
 	$(ROOT_DIR)/cc3200-sdk/oslib/gcc/exe/FreeRTOS.a \
-#/usr/local/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/lib/libc.a \
 #$(ROOT_DIR)/cc3200-sdk/oslib/gcc/exe/libtirtos.a
 
 OBJS += \
@@ -38,7 +37,7 @@ OBJS += \
 
 DEPS := $(OBJS:.o=.d)
 
-OPTIMIZATION_FLAG = -O0
+OPTIMIZATION_FLAG = -Og
 DEBUG_FLAGS = -g
 DEP_FLAGS = -MMD
 WARN_FLAGS = -W -Wall
@@ -67,6 +66,7 @@ $(COMMON_FLAGS) \
 		-ffunction-sections \
 		-fdata-sections \
 		-std=c99 \
+#-lm \
 
 #
 # The flags passed to the c++ compiler
@@ -90,6 +90,7 @@ clean:
 
 realclean: clean
 	rm -f $(TARGET_NAME)$(TARGET_SUFFIX)
+	rm -f $(TARGET_NAME).bin
 
 ultraclean: realclean
 	rm -f openocd.log
@@ -97,6 +98,7 @@ ultraclean: realclean
 all:   $(OBJS)  
 	$(LD) $(LDFLAGS) -o $(TARGET_NAME)$(TARGET_SUFFIX) $(filter %.o %.a, ${^}) $(DRIVER)
 	$(SIZE) $(TARGET_NAME)$(TARGET_SUFFIX)
+	$(OBJCOPY) -O binary $(TARGET_NAME)$(TARGET_SUFFIX) $(TARGET_NAME).bin
 
 # Default rules for building object files from the different type of source
 # files.

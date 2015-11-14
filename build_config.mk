@@ -8,6 +8,7 @@ AS = arm-none-eabi-gcc
 CC = arm-none-eabi-gcc
 CXX = arm-none-eabi-g++
 GDB = arm-none-eabi-gdb
+OBJCOPY = arm-none-eabi-objcopy
 # A mixed C/C++ project requires linking to be done with C++ awareness.
 LD = arm-none-eabi-g++
 SIZE = arm-none-eabi-size
@@ -29,7 +30,7 @@ LDFLAGS += \
 # The define __STRICT_ANSI__ has been introduced for "(GNU Tools for ARM
 # Embedded Processors) 4.8.3 20131129 (release) [ARM/embedded-4_8-branch
 # revision 205641]". Its stdio.h would export a dprintf function otherwise.
-DEFINES += -D__STRICT_ANSI__ -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER \
+DEFINES += -D__STRICT_ANSI__ -Dcc3200 -Dgcc \
 			-DSL_PLATFORM_MULTI_THREADED -DUSE_FREERTOS
 
 
